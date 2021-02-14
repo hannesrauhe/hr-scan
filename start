@@ -7,19 +7,14 @@ if [ -z "$FOLDER" ] ; then
 fi
 PDF_FILE=$(date --iso-8601=seconds).pdf
 
-if [ ! -f $CONFIG_FILE ] ; then
-  echo "Config file $CONFIG_FILE does not exist. Run setup.sh to create it." 
-  exit 1; 
-fi
-
 set -e
 source $CONFIG_FILE
 set +e
 
 cd $FOLDER
-scanadf -d ${DEVICE} -N --resolution ${RESOLUTION} --source "ADF Duplex"
-if [ ! -f image-0001 ] ; then 
-    exit 0; 
+scanadf -d ${DEVICE} -N --resolution ${RESOLUTION-200} --source "ADF Duplex"
+if [ ! -f image-0001 ] ; then
+    exit 0;
 fi
 convert image* -adjoin $PDF_FILE
 rm image*
