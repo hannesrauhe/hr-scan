@@ -1,6 +1,11 @@
 #!/bin/bash
 
-$CONFIG_FILE=~/.hrscan/config.sh
+CONFIG_FILE=/etc/insaned/events/config
+DEVICE=${DEVICE-${1}}
+if [ -z "$FOLDER" ] ; then
+  FOLDER=$(mktemp -d)
+fi
+PDF_FILE=$(date --iso-8601=seconds).pdf
 
 if [ ! -f $CONFIG_FILE ] ; then
   echo "Config file $CONFIG_FILE does not exist. Run setup.sh to create it." 
@@ -11,7 +16,6 @@ set -e
 source $CONFIG_FILE
 set +e
 
-mkdir -p $FOLDER
 cd $FOLDER
 scanadf -d ${DEVICE} -N --resolution ${RESOLUTION} --source "ADF Duplex"
 if [ ! -f image-0001 ] ; then 
