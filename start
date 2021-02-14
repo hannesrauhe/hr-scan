@@ -5,7 +5,7 @@ DEVICE=${DEVICE-${1}}
 if [ -z "$FOLDER" ] ; then
   FOLDER=$(mktemp -d)
 fi
-PDF_FILE=$(date --iso-8601=seconds).pdf
+PDF_FILE=$(date +%Y%m%d_%H%M%S).pdf
 
 set -e
 source $CONFIG_FILE
