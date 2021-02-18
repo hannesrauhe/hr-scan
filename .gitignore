@@ -1,3 +1,4 @@
 # config might contain sensitive data, ignore it
 insaned/events/config
 *.pyc
+.vscode

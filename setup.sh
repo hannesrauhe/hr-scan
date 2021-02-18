@@ -24,3 +24,8 @@
 # systemctl start insaned
 # systemctl enable insaned
 # copy this repo to /etc/insaned/events
+
+# puckjs
+sudo apt install python3-pip libglib2.0-dev
+sudo pip3 install bluepy
+sudo python3 puckwatcher.py
