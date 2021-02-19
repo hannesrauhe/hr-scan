@@ -1,0 +1,20 @@
+#!/bin/bash
+
+CONFIG_FILE=/etc/insaned/events/config
+DEVICE=${DEVICE-${1}}
+if [ -z "$FOLDER" ] ; then
+  FOLDER=$(mktemp -d)
+fi
+JPG_FILE=$(date +%Y%m%d_%H%M%S).jpg
+
+set -e
+source $CONFIG_FILE
+set +e
+
+cd $FOLDER
+scanimage -p --format=jpeg -d $DEVICE --mode=Color --swcrop=yes >$JPG_FILE
+if [ -n "{$WEBDAV_URL}" ] ; then
+  echo "Uploading $JPG_FILE to $WEBDAV_URL"
+  curl -T $JPG_FILE -u $WEBDAV_USER_PASS $WEBDAV_URL
+fi
+

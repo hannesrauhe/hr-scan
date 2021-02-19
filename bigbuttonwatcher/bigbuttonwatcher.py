@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import usb,sys,time
+import usb,sys,time,subprocess
 from enum import Enum
 
 idVendor = 0x1d34
@@ -22,10 +22,13 @@ def findButton():
 def state_change(last,new):
   if new==ButtonState.PRESSED:
     print("Button pressed")
+    subprocess.call("./button_pressed.sh")
   elif last==ButtonState.LID_DOWN and new==ButtonState.LID_UP:
     print("Lid opened")
+    subprocess.call("./lid_opened.sh")
   elif last==ButtonState.LID_UP and new==ButtonState.LID_DOWN:
     print("Lid closed")
+    subprocess.call("./lid_closed.sh")
 
 def main():
   dev = findButton()

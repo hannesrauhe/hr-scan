@@ -10,7 +10,7 @@ devices = [
 # Whatever the last data was
 lastAdvertising = {}
 
-# Gets the actual scanning data  
+# Gets the actual scanning data
 class ScanDelegate(DefaultDelegate):
   def __init__(self):
     DefaultDelegate.__init__(self)
@@ -22,6 +22,9 @@ class ScanDelegate(DefaultDelegate):
         if not dev.addr in lastAdvertising or lastAdvertising[dev.addr] != data:
           onDeviceChanged(dev.addr, data)
         lastAdvertising[dev.addr] = data
+      else:
+        print("Device ",dev.addr,isNewDev,isNewData)
+        lastAdvertising[dev.addr] = value
 
 # Start scanning
 scanner = Scanner().withDelegate(ScanDelegate())
