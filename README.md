@@ -21,7 +21,11 @@ sudo cp systemd/insaned.service /etc/systemd/system
 sudo touch /etc/default/insaned
 sudo systemctl start insaned
 sudo systemctl enable insaned
+```
 
+## Enable the scripts from this repository
+
+```
 # link the scripts from this repostiory to the place where insaned expects them
 sudo ln -s insaned /etc
 
