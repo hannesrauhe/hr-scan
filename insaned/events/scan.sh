@@ -1,22 +1,23 @@
 #!/bin/bash
 
-CONFIG_FILE=/etc/insaned/events/config
-DEVICE=${DEVICE-${1}}
+DEVICE="${1}"
+shift
+
 if [ -z "$FOLDER" ] ; then
   FOLDER=$(mktemp -d --suffix=.scan)
 fi
 FILE_TO_UPLOAD=$(date +%Y%m%d_%H%M%S).pdf
 
-set -e
-source "${CONFIG_FILE}"
-set +e
-
 cd "$FOLDER"
-if [ -n "${SCAN_IMAGE}" ] ; then
+if [ "${SCAN_TYPE}" = "image" ] ; then
   FILE_TO_UPLOAD=$(date +%Y%m%d_%H%M%S).jpg
-  scanimage -p --format=jpeg -d "$DEVICE" --mode=Color --swcrop=yes >$FILE_TO_UPLOAD
+  scanimage -d "$DEVICE" $SCAN_OPTIONS >$FILE_TO_UPLOAD
+
+  if [ ! -f $FILE_TO_UPLOAD ] ; then
+    exit 0;
+  fi
 else
-  scanadf -d "${DEVICE}" -N ${SCAN_OPTIONS} ${MORE_OPTIONS} --source "${SCAN_SOURCE}"
+  scanadf -d "${DEVICE}" ${SCAN_OPTIONS} --source "${SCAN_SOURCE}"
   if [ ! -f image-0001 ] ; then
     exit 0;
   fi

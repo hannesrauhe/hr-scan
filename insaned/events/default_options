@@ -1,0 +1,21 @@
+#!/bin/bash
+# copy this script to "config" and overwrite options to change
+
+BUTTON1_SOURCE="ADF Duplex"
+BUTTON1_TYPE="document"
+BUTTON1_OPTIONS="--swdeskew=yes --swskip=7 --resolution=150  --contrast=25 -N"
+
+BUTTON2_SOURCE="ADF Duplex"
+BUTTON2_TYPE="document"
+BUTTON2_OPTIONS="--swdeskew=yes --swskip=7 --resolution=150  --contrast=25 -N --swcrop=yes"
+
+BUTTON3_SOURCE="ADF Duplex" #ignored for tpye image
+BUTTON3_TYPE="image"
+BUTTON3_OPTIONS="--format=jpeg --mode=Color --resolution=600"
+
+#set these if you want to use WEBDAV uploading
+WEBDAV_USER_PASS=
+WEBDAV_URL=
+
+#set this if you want to store scans outside of /tmp
+#FOLDER=~/scans/$(date -I)
