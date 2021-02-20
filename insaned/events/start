@@ -3,7 +3,7 @@
 CONFIG_FILE=/etc/insaned/events/config
 DEVICE=${DEVICE-${1}}
 if [ -z "$FOLDER" ] ; then
-  FOLDER=$(mktemp -d)
+  FOLDER=$(mktemp -d --suffix=.scan)
 fi
 PDF_FILE=$(date +%Y%m%d_%H%M%S).pdf
 
@@ -12,12 +12,13 @@ source $CONFIG_FILE
 set +e
 
 cd $FOLDER
-scanadf -d ${DEVICE} -N ${SCAN_OPTIONS} --source "${SCAN_SOURCE}"
+scanadf -d ${DEVICE} -N ${SCAN_OPTIONS}
 if [ ! -f image-0001 ] ; then
     exit 0;
 fi
-convert image* -adjoin $PDF_FILE
-rm image*
+convert image* -adjoin uncompressed.pdf && rm image*
+gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile=$PDF_FILE uncompressed.pdf && rm uncompressed.pdf
+
 if [ -n "{$WEBDAV_URL}" ] ; then
   echo "Uploading $PDF_FILE to $WEBDAV_URL"
   curl -T $PDF_FILE -u $WEBDAV_USER_PASS $WEBDAV_URL
