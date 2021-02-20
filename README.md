@@ -24,5 +24,8 @@ sudo systemctl enable insaned
 
 # link the scripts from this repostiory to the place where insaned expects them
 sudo ln -s insaned /etc
+
+# make them executable
+sudo chmod +x /etc/insaned/events/*
 ```
 
