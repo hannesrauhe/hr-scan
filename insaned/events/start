@@ -12,7 +12,7 @@ source $CONFIG_FILE
 set +e
 
 cd $FOLDER
-scanadf -d ${DEVICE} -N ${SCAN_OPTIONS}
+scanadf -d ${DEVICE} -N ${SCAN_OPTIONS} --source "${SCAN_SOURCE}"
 if [ ! -f image-0001 ] ; then
     exit 0;
 fi
