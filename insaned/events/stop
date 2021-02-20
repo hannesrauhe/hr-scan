@@ -2,4 +2,4 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
-MORE_OPTIONS="--swcrop=yes" "${DIR}/scan.sh"
+MORE_OPTIONS="--swcrop=yes --rollerdeskew=yes" "${DIR}/scan.sh"

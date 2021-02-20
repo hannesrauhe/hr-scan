@@ -1,4 +1,4 @@
 #!/bin/bash
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
-SCAN_IMAGE=1 "./${DIR}/scan.sh"
+SCAN_IMAGE=1 "${DIR}/scan.sh"

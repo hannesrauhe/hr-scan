@@ -16,7 +16,7 @@ if [ -n "${SCAN_IMAGE}" ] ; then
   FILE_TO_UPLOAD=$(date +%Y%m%d_%H%M%S).jpg
   scanimage -p --format=jpeg -d "$DEVICE" --mode=Color --swcrop=yes >$FILE_TO_UPLOAD
 else
-  scanadf -d "${DEVICE}" -N ${SCAN_OPTIONS} --source "${SCAN_SOURCE}"
+  scanadf -d "${DEVICE}" -N ${SCAN_OPTIONS} ${MORE_OPTIONS} --source "${SCAN_SOURCE}"
   if [ ! -f image-0001 ] ; then
     exit 0;
   fi
