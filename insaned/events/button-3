@@ -1,4 +1,21 @@
 #!/bin/bash
+
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
-SCAN_IMAGE=1 "${DIR}/scan.sh" $@
+DEFAULT_OPTIONS_FILE="${DIR}/default_options"
+CONFIG_FILE="${DIR}/config"
+
+set -e
+source "${DEFAULT_OPTIONS_FILE}"
+if [ -f "${CONFIG_FILE}" ] ; then 
+  source "${CONFIG_FILE}"
+fi
+set +e
+
+export WEBDAV_USER_PASS
+export WEBDAV_URL
+export SCAN_TYPE="$BUTTON3_TYPE"
+export SCAN_OPTIONS="$BUTTON3_OPTIONS"
+export SCAN_SOURCE="$BUTTON3_SOURCE"
+
+"${DIR}/scan.sh" "$@"
