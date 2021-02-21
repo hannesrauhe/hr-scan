@@ -29,3 +29,8 @@ if [ -n "${WEBDAV_URL}" ] ; then
   echo "Uploading $FILE_TO_UPLOAD to $WEBDAV_URL"
   curl -T $FILE_TO_UPLOAD -u $WEBDAV_USER_PASS $WEBDAV_URL
 fi
+
+if [ -n "${RSYNC_PATH}" ] ; then
+  echo "Uploading $FILE_TO_UPLOAD to $RSYNC_PATH"
+  rsync $RSYNC_OPTIONS $FILE_TO_UPLOAD $RSYNC_PATH
+fi
