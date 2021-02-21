@@ -24,5 +24,9 @@ EXEC_FINISH="echo Scanning done"
 WEBDAV_USER_PASS=
 WEBDAV_URL=
 
+#set these if you want to use rsync uploading
+RSYNC_OPTIONS=
+RSYNC_PATH=
+
 #set this if you want to store scans outside of /tmp
 #FOLDER=~/scans/$(date -I)
