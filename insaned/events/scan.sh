@@ -26,6 +26,7 @@ else
 fi
 
 if [ -n "{$WEBDAV_URL}" ] ; then
-  echo "Uploading $FILE_TO_UPLOAD to $WEBDAV_URL"
+  $EXEC_UPLOAD_START
   curl -T $FILE_TO_UPLOAD -u $WEBDAV_USER_PASS $WEBDAV_URL
+  $EXEC_UPLOAD_FINISH
 fi
