@@ -13,6 +13,9 @@ BUTTON3_SOURCE="ADF Duplex" #ignored for tpye image
 BUTTON3_TYPE="image"
 BUTTON3_OPTIONS="--format=jpeg --mode=Color --resolution=600"
 
+EXEC_OFF="echo Scanner offline"
+EXEC_ON="echo Scanner online"
+
 #set these if you want to use WEBDAV uploading
 WEBDAV_USER_PASS=
 WEBDAV_URL=
