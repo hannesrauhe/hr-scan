@@ -16,8 +16,9 @@ BUTTON3_OPTIONS="--format=jpeg --mode=Color --resolution=600"
 # if you want, you can execute fancy but simple commands on certain events
 EXEC_OFF="echo Scanner offline"
 EXEC_ON="echo Scanner online"
+EXEC_START="echo Starting to scan"
 EXEC_UPLOAD_START="echo Uploading $${FILE_TO_UPLOAD}} to $${WEBDAV_URL}"
-EXEC_UPLOAD_FINISH="echo Uploading done"
+EXEC_FINISH="echo Scanning done"
 
 #set these if you want to use WEBDAV uploading
 WEBDAV_USER_PASS=

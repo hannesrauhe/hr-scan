@@ -8,6 +8,8 @@ if [ -z "$FOLDER" ] ; then
 fi
 FILE_TO_UPLOAD=$(date +%Y%m%d_%H%M%S).pdf
 
+$EXEC_START
+
 cd "$FOLDER"
 if [ "${SCAN_TYPE}" = "image" ] ; then
   FILE_TO_UPLOAD=$(date +%Y%m%d_%H%M%S).jpg
@@ -25,8 +27,8 @@ else
   gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile=$FILE_TO_UPLOAD uncompressed.pdf && rm uncompressed.pdf
 fi
 
-if [ -n "{$WEBDAV_URL}" ] ; then
+if [ -n "${$WEBDAV_URL}" ] ; then
   $EXEC_UPLOAD_START
   curl -T $FILE_TO_UPLOAD -u $WEBDAV_USER_PASS $WEBDAV_URL
-  $EXEC_UPLOAD_FINISH
 fi
+$EXEC_FINISH
