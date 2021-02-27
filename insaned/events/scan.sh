@@ -8,6 +8,8 @@ if [ -z "$FOLDER" ] ; then
 fi
 FILE_TO_UPLOAD=$(date +%Y%m%d_%H%M%S).pdf
 
+$EXEC_START
+
 cd "$FOLDER"
 if [ "${SCAN_TYPE}" = "image" ] ; then
   FILE_TO_UPLOAD=$(date +%Y%m%d_%H%M%S).jpg
@@ -26,7 +28,7 @@ else
 fi
 
 if [ -n "${WEBDAV_URL}" ] ; then
-  echo "Uploading $FILE_TO_UPLOAD to $WEBDAV_URL"
+  $EXEC_UPLOAD_START
   curl -T $FILE_TO_UPLOAD -u $WEBDAV_USER_PASS $WEBDAV_URL
 fi
 
@@ -34,3 +36,5 @@ if [ -n "${RSYNC_PATH}" ] ; then
   echo "Uploading $FILE_TO_UPLOAD to $RSYNC_PATH"
   rsync $RSYNC_OPTIONS $FILE_TO_UPLOAD $RSYNC_PATH
 fi
+
+$EXEC_FINISH
