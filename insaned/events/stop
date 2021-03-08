@@ -4,4 +4,8 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 source "${DIR}/load_config.sh"
 
+export SCAN_TYPE="$BUTTON2_TYPE"
+export SCAN_OPTIONS="$BUTTON2_OPTIONS"
+export SCAN_SOURCE="$BUTTON2_SOURCE"
+
 "${DIR}/scan.sh" "$@"
