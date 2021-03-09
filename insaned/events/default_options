@@ -20,13 +20,14 @@ EXEC_START="echo Starting to scan"
 EXEC_UPLOAD_START="echo Uploading $${FILE_TO_UPLOAD}} to $${WEBDAV_URL}"
 EXEC_FINISH="echo Scanning done"
 
-#set these if you want to use WEBDAV uploading
+# set these if you want to use WEBDAV uploading
 WEBDAV_USER_PASS=
 WEBDAV_URL=
+WEBDAV_CREATE_SUBDIR_NAME= # will create the given subdir before uploading: $(date +%Y) if you want a subdir per year
 
-#set these if you want to use rsync uploading
+# set these if you want to use rsync uploading
 RSYNC_OPTIONS=
 RSYNC_PATH=
 
-#set this if you want to store scans outside of /tmp
-#FOLDER=~/scans/$(date -I)
+# set this if you want to store scans outside of /tmp
+# FOLDER=~/scans/$(date -I)

@@ -7,7 +7,7 @@ export CONFIG_FILE="${DIR}/config"
 
 set -e
 source "${DEFAULT_OPTIONS_FILE}"
-if [ -f "${CONFIG_FILE}" ] ; then 
+if [ -f "${CONFIG_FILE}" ] ; then
   source "${CONFIG_FILE}"
 fi
 set +e
@@ -15,6 +15,7 @@ set +e
 # need to export CONFIG options so they are passed to correctly to scan.sh
 export WEBDAV_USER_PASS
 export WEBDAV_URL
+export WEBDAV_CREATE_SUBDIR_NAME
 export RSYNC_OPTIONS
 export RSYNC_PATH
 export EXEC_START
