@@ -29,7 +29,10 @@ fi
 
 if [ -n "${WEBDAV_URL}" ] ; then
   $EXEC_UPLOAD_START
-  curl -T $FILE_TO_UPLOAD -u $WEBDAV_USER_PASS $WEBDAV_URL
+  if [ -n "${WEBDAV_CREATE_SUBDIR_NAME}" ] ; then
+    curl -X MKCOL -u $WEBDAV_USER_PASS $WEBDAV_URL/${WEBDAV_CREATE_SUBDIR_NAME} || true
+  fi
+  curl -T $FILE_TO_UPLOAD -u $WEBDAV_USER_PASS $WEBDAV_URL/${WEBDAV_CREATE_SUBDIR_NAME}
 fi
 
 if [ -n "${RSYNC_PATH}" ] ; then
