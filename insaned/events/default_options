@@ -28,5 +28,8 @@ WEBDAV_URL=
 RSYNC_OPTIONS=
 RSYNC_PATH=
 
+#set this if you want to copy the final document
+LOCAL_PATH=
+
 #set this if you want to store scans outside of /tmp
-#FOLDER=~/scans/$(date -I)
+#WORK_DIR=~/scans/$(date -I)

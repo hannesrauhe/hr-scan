@@ -7,7 +7,7 @@ export CONFIG_FILE="${DIR}/config"
 
 set -e
 source "${DEFAULT_OPTIONS_FILE}"
-if [ -f "${CONFIG_FILE}" ] ; then 
+if [ -f "${CONFIG_FILE}" ] ; then
   source "${CONFIG_FILE}"
 fi
 set +e
@@ -17,9 +17,10 @@ export WEBDAV_USER_PASS
 export WEBDAV_URL
 export RSYNC_OPTIONS
 export RSYNC_PATH
+export LOCAL_PATH
 export EXEC_START
 export EXEC_OFF
 export EXEC_ON
 export EXEC_UPLOAD_START
 export EXEC_FINISH
-export FOLDER
+export WORK_DIR
