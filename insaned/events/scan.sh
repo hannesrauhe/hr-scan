@@ -42,4 +42,8 @@ if [ -n "${LOCAL_PATH}" ] ; then
   cp "$FILE_TO_UPLOAD" "$LOCAL_PATH"
 fi
 
+if [ -n "${MAIL_RECV_ADDR}" ] ; then
+  echo "New document: $FILE_TO_UPLOAD" | mutt -s "New document: $FILE_TO_UPLOAD" "${MAIL_RECV_ADDR}" -a "$FILE_TO_UPLOAD"
+fi
+
 $EXEC_FINISH

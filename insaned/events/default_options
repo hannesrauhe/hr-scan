@@ -31,5 +31,8 @@ RSYNC_PATH=
 #set this if you want to copy the final document
 LOCAL_PATH=
 
+#set this if you want to send the final document via mail with mutt
+MAIL_RECV_ADDR=
+
 #set this if you want to store scans outside of /tmp
 #WORK_DIR=~/scans/$(date -I)
