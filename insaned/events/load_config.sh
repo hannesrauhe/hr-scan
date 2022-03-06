@@ -24,3 +24,4 @@ export EXEC_ON
 export EXEC_UPLOAD_START
 export EXEC_FINISH
 export WORK_DIR
+export MAIL_RECV_ADDR
