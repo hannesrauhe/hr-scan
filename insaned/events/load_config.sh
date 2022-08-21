@@ -18,9 +18,11 @@ export WEBDAV_URL
 export WEBDAV_CREATE_SUBDIR_NAME
 export RSYNC_OPTIONS
 export RSYNC_PATH
+export LOCAL_PATH
 export EXEC_START
 export EXEC_OFF
 export EXEC_ON
 export EXEC_UPLOAD_START
 export EXEC_FINISH
-export FOLDER
+export WORK_DIR
+export MAIL_RECV_ADDR
