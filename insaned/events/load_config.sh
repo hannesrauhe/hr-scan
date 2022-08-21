@@ -15,6 +15,7 @@ set +e
 # need to export CONFIG options so they are passed to correctly to scan.sh
 export WEBDAV_USER_PASS
 export WEBDAV_URL
+export WEBDAV_CREATE_SUBDIR_NAME
 export RSYNC_OPTIONS
 export RSYNC_PATH
 export LOCAL_PATH
